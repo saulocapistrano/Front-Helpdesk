@@ -26,12 +26,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { NavComponent } from './components/nav/nav.component';
+import { HomeComponent } from './components/home/home.component';
 
 // componentes utilizados no projeto
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
+    HomeComponent,
   
   ],
   imports: [
