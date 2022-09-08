@@ -19,5 +19,8 @@ export class AuthGuard implements CanActivate {
       return false
     }
   }
+  isAuthenticated() {
+    throw new Error('Method not implemented.');
+  }
   
 }
