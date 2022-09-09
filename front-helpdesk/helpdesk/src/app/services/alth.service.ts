@@ -31,4 +31,7 @@ export class AlthService {
     }
     return false
   }
+  logout(){
+    localStorage.clear();
+  }
 }

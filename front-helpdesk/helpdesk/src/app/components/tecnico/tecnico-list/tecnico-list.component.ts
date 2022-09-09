@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Tecnico } from 'src/app/models/tecnico';
+import { TecnicoService } from 'src/app/services/tecnico.service';
 
 @Component({
   selector: 'app-tecnico-list',
@@ -11,38 +12,26 @@ import { Tecnico } from 'src/app/models/tecnico';
 export class TecnicoListComponent implements OnInit {
  
   ELEMENT_DATA: Tecnico[] = [ 
-    {
-    id: 1,
-    nome: "José da Silva",
-    cpf: '74348579784',
-    email: 'josesilva@gmail.com',
-    senha: '123',
-    perfils:['0'],
-    dataCriacao: '06/09/2022'
-  },
-  {
-    id: 1,
-    nome: "José da Silva",
-    cpf: '00088799816',
-    email: 'josesilva@gmail.com',
-    senha: '123',
-    perfils:['0'],
-    dataCriacao: '06/09/2022'
-  } 
+    
   ]
   
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol','acoes'];
   dataSource = new MatTableDataSource<Tecnico>(this.ELEMENT_DATA);
-
-  constructor() { }
+  
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  constructor(
+    private service: TecnicoService
+    ) { }
 
   ngOnInit(): void {
+    this.findAll
   }
+  findAll(){
+    this.service.findAll().subscrible(resposta =>{
+      this.ELEMENT_DATA = resposta
+      this.dataSource = new MatTableDataSource<Tecnico>(this.ELEMENT_DATA);
+      this.dataSource.paginator = this.paginator;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+    })
   }
-
 }
