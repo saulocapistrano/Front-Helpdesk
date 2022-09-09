@@ -27,3 +27,14 @@ img{
     color: white;
     background: linear-gradient(3deg, rgba(74,65,232,1) 47%, rgba(63,149,129,1) 98%, rgba(140,32,127,1) 100%);
 } 
+mat-form-field{
+    width: 100%;
+}
+button{
+    width: 100%;
+}
+h1{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 3rem;
+}
